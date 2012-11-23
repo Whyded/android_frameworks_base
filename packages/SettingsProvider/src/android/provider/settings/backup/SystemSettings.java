@@ -114,5 +114,7 @@ public class SystemSettings {
         Settings.System.GAMING_MODE_MEDIA,
         Settings.System.TORCH_LONG_PRESS_POWER_GESTURE,
         Settings.System.TORCH_LONG_PRESS_POWER_TIMEOUT,
+        Settings.System.BUTTON_BRIGHTNESS,
+        Settings.System.BUTTON_BACKLIGHT_TIMEOUT,
     };
 }

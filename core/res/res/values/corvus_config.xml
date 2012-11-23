@@ -69,6 +69,10 @@
     <!-- Whether device has VOOC charging support -->
     <bool name="config_hasVoocCharger">false</bool>
 
+    <!-- Button backlight -->
+    <dimen name="config_buttonBrightnessSettingDefaultFloat">1.0</dimen>
+    <bool name="config_deviceHasVariableButtonBrightness">false</bool>
+
     <!-- Whether device has notification LED -->
     <bool name="config_hasNotificationLed">true</bool>
 

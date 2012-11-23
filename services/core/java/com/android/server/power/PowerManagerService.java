@@ -1167,6 +1167,13 @@ public final class PowerManagerService extends SystemService
         resolver.registerContentObserver(Settings.System.getUriFor(
                 Settings.System.BUTTON_BACKLIGHT_TIMEOUT),
                 false, mSettingsObserver, UserHandle.USER_ALL);
+        resolver.registerContentObserver(Settings.System.getUriFor(
+                Settings.System.BUTTON_BRIGHTNESS),
+                false, mSettingsObserver, UserHandle.USER_ALL);
+        resolver.registerContentObserver(Settings.System.getUriFor(
+                Settings.System.BUTTON_BACKLIGHT_TIMEOUT),
+                false, mSettingsObserver, UserHandle.USER_ALL);
+
         IVrManager vrManager = IVrManager.Stub.asInterface(getBinderService(Context.VR_SERVICE));
         if (vrManager != null) {
             try {
@@ -1292,6 +1299,12 @@ public final class PowerManagerService extends SystemService
         mScreenBrightnessModeSetting = Settings.System.getIntForUser(resolver,
                 Settings.System.SCREEN_BRIGHTNESS_MODE,
                 Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL, UserHandle.USER_CURRENT);
+        mButtonTimeout = Settings.System.getIntForUser(resolver,
+                Settings.System.BUTTON_BACKLIGHT_TIMEOUT,
+                DEFAULT_BUTTON_ON_DURATION, UserHandle.USER_CURRENT);
+        mButtonBrightness = Settings.System.getFloatForUser(resolver,
+                Settings.System.BUTTON_BRIGHTNESS, mButtonBrightnessSettingDefault,
+                UserHandle.USER_CURRENT);
 
         mButtonTimeout = Settings.System.getIntForUser(resolver,
                 Settings.System.BUTTON_BACKLIGHT_TIMEOUT,
