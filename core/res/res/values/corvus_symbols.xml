@@ -91,6 +91,12 @@
   <!-- Vendor platform signatures -->
   <java-symbol type="array" name="config_vendorPlatformSignatures" />
 
+  
+    <java-symbol type="bool" name="config_intrusiveBatteryLed" />
+    <java-symbol type="bool" name="config_multiColorBatteryLed" />
+    <java-symbol type="bool" name="config_ledCanPulse" />
+
+
    <!-- AOKP custom system animations -->
      <java-symbol type="string" name="action_null"/>
      <java-symbol type="string" name="animation_fade"/>
