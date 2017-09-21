@@ -102,4 +102,9 @@
 
   <!-- Cycle through ringer modes -->
   <java-symbol type="string" name="volume_dialog_ringer_guidance_normal" />
+
+  <!-- HW keys binding -->
+  <java-symbol type="anim" name="custom_app_in" />
+  <java-symbol type="anim" name="custom_app_out" />
+  <java-symbol type="integer" name="config_deviceHardwareKeys" />
 </resources>
