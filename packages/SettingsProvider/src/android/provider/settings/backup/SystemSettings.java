@@ -116,5 +116,6 @@ public class SystemSettings {
         Settings.System.TORCH_LONG_PRESS_POWER_TIMEOUT,
         Settings.System.BUTTON_BRIGHTNESS,
         Settings.System.BUTTON_BACKLIGHT_TIMEOUT,
+        Settings.System.ANBI_ENABLED_OPTION,
     };
 }
