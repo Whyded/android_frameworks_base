@@ -1685,6 +1685,11 @@ public class NotificationManagerService extends SystemService {
                             Settings.Secure.NOTIFICATION_HISTORY_ENABLED, 0) == 1);
                 }
             }
+            if (uri == null || NOTIFICATION_SOUND_VIB_SCREEN_ON.equals(uri)) {
+                mSoundVibScreenOn = Settings.System.getIntForUser(resolver,
+                        Settings.System.NOTIFICATION_SOUND_VIB_SCREEN_ON, 1,
+                        UserHandle.USER_CURRENT) == 1;
+            }
         }
     }
 
