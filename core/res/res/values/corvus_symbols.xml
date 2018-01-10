@@ -93,4 +93,7 @@
   <!-- Vendor platform signatures -->
   <java-symbol type="array" name="config_vendorPlatformSignatures" />
 
+  <!-- Flashlight proximity check -->
+  <java-symbol type="integer" name="config_flashlightProximityTimeout" />
+
 </resources>
