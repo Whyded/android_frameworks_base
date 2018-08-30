@@ -265,7 +265,7 @@ public class QSFactoryImpl implements QSFactory {
             case "theme":
                 return mThemeTileProvider.get();
             case "weather":
-                return mWeatherTile.get();
+                return mWeatherTileProvider.get();
         }
 
         // Custom tiles
