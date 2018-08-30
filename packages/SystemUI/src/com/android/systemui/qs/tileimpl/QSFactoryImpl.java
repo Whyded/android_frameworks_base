@@ -259,7 +259,7 @@ public class QSFactoryImpl implements QSFactory {
             case "aod":
                 return mAODTileProvider.get();
             case "weather":
-                return mWeatherTile.get();
+                return mWeatherTileProvider.get();
         }
 
         // Custom tiles
