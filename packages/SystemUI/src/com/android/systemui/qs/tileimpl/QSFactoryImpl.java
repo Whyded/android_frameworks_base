@@ -56,6 +56,7 @@ import com.android.systemui.qs.tiles.SyncTile;
 import com.android.systemui.qs.tiles.UiModeNightTile;
 import com.android.systemui.qs.tiles.UsbTetherTile;
 import com.android.systemui.qs.tiles.UserTile;
+import com.android.systemui.qs.tiles.WeatherTile;
 import com.android.systemui.qs.tiles.WifiTile;
 import com.android.systemui.qs.tiles.WorkModeTile;
 import com.android.systemui.util.leak.GarbageMonitor;
@@ -104,6 +105,7 @@ public class QSFactoryImpl implements QSFactory {
     private final Provider<CompassTile> mCompassTileProvider;
     private final Provider<SyncTile> mSyncTileProvider;
     private final Provider<AODTile> mAODTileProvider;
+    private final Provider<WeatherTile> mWeatherTileProvider;
 
 
     private final Lazy<QSHost> mQsHostLazy;
@@ -142,7 +144,8 @@ public class QSFactoryImpl implements QSFactory {
             Provider<SoundTile> soundTileProvider,
             Provider<CompassTile> compassTileProvider,
             Provider<SyncTile> syncTileProvider,
-            Provider<AODTile> aodTileProvider) { 
+            Provider<AODTile> aodTileProvider,
+            Provider<WeatherTile> weatherTileProvider) {
         mQsHostLazy = qsHostLazy;
         mWifiTileProvider = wifiTileProvider;
         mBluetoothTileProvider = bluetoothTileProvider;
@@ -177,7 +180,7 @@ public class QSFactoryImpl implements QSFactory {
         mCompassTileProvider = compassTileProvider;
         mSyncTileProvider = syncTileProvider;
         mAODTileProvider = aodTileProvider;
-
+        mWeatherTileProvider = weatherTileProvider;
     }
 
     public QSTile createTile(String tileSpec) {
@@ -255,6 +258,8 @@ public class QSFactoryImpl implements QSFactory {
                 return mSyncTileProvider.get();
             case "aod":
                 return mAODTileProvider.get();
+            case "weather":
+                return mWeatherTile.get();
         }
 
         // Custom tiles
