@@ -24,6 +24,7 @@ LOCAL_REQUIRED_MODULES := \
 	AccentColorSpaceOverlay \
 	AccentColorGreenOverlay \
 	AccentColorPurpleOverlay \
+	AccentColorMIUIOverlay \
 	AccentColorTealOverlay \
 	AccentColorRedOverlay \
 	AccentColorQGreenOverlay \
