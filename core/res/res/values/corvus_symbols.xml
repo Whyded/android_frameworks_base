@@ -100,4 +100,6 @@
   <java-symbol type="color" name="theme_generic_semi_transparent_color" />
   <java-symbol type="color" name="du_themes_qs_inactive_color" />
 
+  <!-- Cycle through ringer modes -->
+  <java-symbol type="string" name="volume_dialog_ringer_guidance_normal" />
 </resources>
