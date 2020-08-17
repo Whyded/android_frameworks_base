@@ -93,5 +93,12 @@ public class SystemSettings {
         Settings.System.LOCKSCREEN_MEDIA_ART,
         Settings.System.QS_SHOW_BRIGHTNESS,
         Settings.System.QS_BRIGHTNESS_POSITION_BOTTOM,
+        Settings.System.GAMING_MODE_HEADS_UP,
+        Settings.System.GAMING_MODE_ZEN,
+        Settings.System.GAMING_MODE_NAVBAR,
+        Settings.System.GAMING_MODE_HW_BUTTONS,
+        Settings.System.GAMING_MODE_BRIGHTNESS_ENABLED,
+        Settings.System.GAMING_MODE_MEDIA_ENABLED,
+        Settings.System.GAMING_MODE_MEDIA,
     };
 }
