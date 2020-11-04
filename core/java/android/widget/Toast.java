@@ -25,6 +25,7 @@ import android.annotation.Nullable;
 import android.annotation.StringRes;
 import android.app.INotificationManager;
 import android.app.ITransientNotification;
+import android.content.ContentResolver;
 import android.app.ITransientNotificationCallback;
 import android.compat.Compatibility;
 import android.compat.annotation.ChangeId;
@@ -42,6 +43,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.RemoteException;
 import android.os.ServiceManager;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -84,6 +86,8 @@ import java.util.List;
 public class Toast {
     static final String TAG = "Toast";
     static final boolean localLOGV = false;
+
+    private boolean mShowIcon;
 
     private Drawable mCustomIcon;
 
@@ -716,6 +720,9 @@ public class Toast {
                 if (context == null) {
                     context = mView.getContext();
                 }
+
+              boolean mShowIcon = Settings.System.getInt(context.getContentResolver(), Settings.System.TOAST_ICON, 1) == 1; 
+
                 ImageView appIcon = (ImageView) mView.findViewById(android.R.id.icon);
                 if (appIcon != null) { // using app icon
                     if (mCustomIcon == null) {
@@ -727,6 +734,7 @@ public class Toast {
                             // nothing to do
                         }
                         appIcon.setImageDrawable(icon);
+                        appIcon.setVisibility(mShowIcon ? View.VISIBLE : View.GONE);
                     } else { // using a custom icon
                         appIcon.setImageDrawable(mCustomIcon);
                     }
