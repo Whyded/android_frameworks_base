@@ -452,7 +452,6 @@ public class KeyguardClockSwitch extends RelativeLayout {
         }
     }
 
-<<<<<<< HEAD
     private void adjustStatusAreaPadding(ClockPlugin plugin) {
         final boolean mIsTypeClock = plugin != null && plugin.getName().equals("type");
         mKeyguardStatusArea.setRowGravity(mIsTypeClock ? Gravity.LEFT : Gravity.CENTER);

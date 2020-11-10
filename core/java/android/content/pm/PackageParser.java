@@ -3579,7 +3579,9 @@ public class PackageParser {
             ai.privateFlags |= ApplicationInfo.PRIVATE_FLAG_REQUEST_LEGACY_EXTERNAL_STORAGE;
         }
            ai.privateFlags |= ApplicationInfo.PRIVATE_FLAG_ALLOW_AUDIO_PLAYBACK_CAPTURE;
-                R.styleable.AndroidManifestApplication_allowAudioPlaybackCapture,	
+               
+
+	
         if (sa.getBoolean(
                 R.styleable.AndroidManifestApplication_allowNativeHeapPointerTagging, true)) {
             ai.privateFlags |= ApplicationInfo.PRIVATE_FLAG_ALLOW_NATIVE_HEAP_POINTER_TAGGING;
