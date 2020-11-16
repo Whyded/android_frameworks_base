@@ -5085,6 +5085,11 @@ public final class Settings {
          */
         public static final String FORCE_SHOW_NAVBAR = "navigation_bar_show_new";
 
+         /**
+         * @hide
+         */
+        public static final String QS_TILE_STYLE = "qs_tile_style";
+
         /**
          * Screen off fod
          * @hide
@@ -5241,6 +5246,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(BUTTON_BACKLIGHT_TIMEOUT);
             PRIVATE_SETTINGS.add(BUTTON_BRIGHTNESS);
             PRIVATE_SETTINGS.add(FORCE_SHOW_NAVBAR);
+            PRIVATE_SETTINGS.add(QS_TILE_STYLE);
         }
 
         /**
