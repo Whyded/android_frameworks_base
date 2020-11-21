@@ -32,12 +32,11 @@ import android.os.UserHandle;
 import android.provider.Settings;
 import android.view.KeyEvent;
 import android.view.ViewConfiguration;
-import java.util.List;
 
+import java.util.List;
 
 public final class LineageButtons {
     private final String TAG = "LineageButtons";
-    
 
     private static final int MSG_DISPATCH_VOLKEY_WITH_WAKELOCK = 1;
 
@@ -47,7 +46,6 @@ public final class LineageButtons {
     private boolean mIsLongPress = false;
 
     private boolean mVolBtnMusicControls = false;
-
     private final MediaSessionManager mMediaSessionManager;
 
     private class ButtonHandler extends Handler {
@@ -86,21 +84,12 @@ public final class LineageButtons {
         sInstance = this;
     }
 
-     public void skipTrack() {
-        long when = SystemClock.uptimeMillis();
-        KeyEvent newEvent = new KeyEvent(when, when,
-                KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_MEDIA_NEXT, 0);
-        onSkipTrackEvent(newEvent);
-    }
-
-
     public boolean handleVolumeKey(KeyEvent event, boolean isInteractive) {
         final boolean down = event.getAction() == KeyEvent.ACTION_DOWN;
         final int keyCode = event.getKeyCode();
 
         if (isInteractive) {
             // nothing to do here for now
-            
             return false;
         }
 
@@ -117,10 +106,8 @@ public final class LineageButtons {
                     int newKeyCode = (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN
                             ? KeyEvent.KEYCODE_MEDIA_PREVIOUS
                             : KeyEvent.KEYCODE_MEDIA_NEXT);
-
                     KeyEvent newEvent = new KeyEvent(event.getDownTime(), event.getEventTime(),
                             event.getAction(), newKeyCode, 0);
-                    
                     Message msg = mHandler.obtainMessage(MSG_DISPATCH_VOLKEY_WITH_WAKELOCK,
                             newEvent);
                     msg.setAsynchronous(true);
@@ -169,13 +156,21 @@ public final class LineageButtons {
         }
     }
 
+    public void skipTrack() {
+        long when = SystemClock.uptimeMillis();
+        KeyEvent newEvent = new KeyEvent(when, when,
+                KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_MEDIA_NEXT, 0);
+        onSkipTrackEvent(newEvent);
+    }
+
     private int getMediaControllerPlaybackState(MediaController controller) {
         if (controller != null) {
             final PlaybackState playbackState = controller.getPlaybackState();
             if (playbackState != null) {
                 return playbackState.getState();
             }
-       return PlaybackState.STATE_NONE; 
+        }
+        return PlaybackState.STATE_NONE;
     }
 
     class SettingsObserver extends ContentObserver {
@@ -185,11 +180,11 @@ public final class LineageButtons {
 
         void observe() {
             ContentResolver resolver = mContext.getContentResolver();
-            
+
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.VOLUME_BUTTON_MUSIC_CONTROL),
                             false, this, UserHandle.USER_ALL);
-          
+
             update();
         }
 
@@ -200,11 +195,10 @@ public final class LineageButtons {
 
         private void update() {
             ContentResolver resolver = mContext.getContentResolver();
-            
-         mVolBtnMusicControls = Settings.System.getIntForUser(
+
+            mVolBtnMusicControls = Settings.System.getIntForUser(
                     resolver, Settings.System.VOLUME_BUTTON_MUSIC_CONTROL, 1,
                     UserHandle.USER_CURRENT) == 1;
-            
         }
     }
 }
