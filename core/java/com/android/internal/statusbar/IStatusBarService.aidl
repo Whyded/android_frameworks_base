@@ -152,6 +152,8 @@ interface IStatusBarService
      * Starts the default assistant app.
      */
     void startAssist(in Bundle args);
+
+    /**
      * Used to show or hide in display fingerprint view.
      */
     void showInDisplayFingerprintView();
