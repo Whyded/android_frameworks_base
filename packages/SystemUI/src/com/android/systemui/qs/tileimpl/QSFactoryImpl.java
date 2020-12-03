@@ -146,7 +146,7 @@ public class QSFactoryImpl implements QSFactory {
             Provider<CompassTile> compassTileProvider,
             Provider<SyncTile> syncTileProvider,
             Provider<AODTile> aodTileProvider,
-            Provider<ThemeTile> themeTileProvider) {
+            Provider<ThemeTile> themeTileProvider,
             Provider<AODTile> aodTileProvider,
             Provider<WeatherTile> weatherTileProvider) {
         mQsHostLazy = qsHostLazy;
