@@ -180,7 +180,7 @@ public class EdgeBackGestureHandler extends CurrentUserTracker implements Displa
     private int mRightInset;
     private int mSysUiFlags;
 
-<   private boolean mBlockedGesturalNavigation;
+   private boolean mBlockedGesturalNavigation;
 
     private boolean mEdgeHapticEnabled;
     private static final int HAPTIC_DURATION = 20;
