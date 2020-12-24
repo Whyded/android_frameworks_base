@@ -303,6 +303,17 @@ public class Utils {
         }
     }
 
+    // Method to detect navigation bar is in use
+    public static boolean hasNavigationBar(Context context) {
+        boolean hasNavbar = false;
+        IWindowManager wm = WindowManagerGlobal.getWindowManagerService();
+        try {
+            hasNavbar = wm.hasNavigationBar(context.getDisplayId());
+        } catch (RemoteException ex) {
+        }
+        return hasNavbar;
+    }
+
     // Method to detect whether the system dark theme is enabled or not
     public static boolean isDarkTheme(Context context) {
         UiModeManager mUiModeManager =
