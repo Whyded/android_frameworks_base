@@ -5163,6 +5163,12 @@ public final class Settings {
         public static final String QS_QUICKBAR_COLUMNS = "qs_quickbar_columns";
 
          /**
+         * Whether to show or hide the running services icon
+         * @hide
+         */
+        public static final String QS_RUNNING_SERVICES_TOGGLE = "qs_running_services_toggle";
+
+         /**
           * @hide
          */
         public static final String GLOBAL_ACTIONS_LIST = "global_actions_list";
