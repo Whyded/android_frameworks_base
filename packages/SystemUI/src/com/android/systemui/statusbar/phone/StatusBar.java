@@ -698,6 +698,8 @@ public class StatusBar extends SystemUI implements DemoMode,
     private Lazy<NotificationShadeDepthController> mNotificationShadeDepthControllerLazy;
     private final BubbleController mBubbleController;
     private final BubbleController.BubbleExpandListener mBubbleExpandListener;
+    private boolean mShowNavBar;
+
 
     private ActivityIntentHelper mActivityIntentHelper;
 
@@ -714,17 +716,31 @@ public class StatusBar extends SystemUI implements DemoMode,
             mContext.getContentResolver().registerContentObserver(Settings.System.getUriFor(
                     Settings.System.DOUBLE_TAP_SLEEP_LOCKSCREEN),
                     false, this, UserHandle.USER_ALL);
+            mContext.getContentResolver().registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.FORCE_SHOW_NAVBAR),
+                    false, this, UserHandle.USER_ALL);
         }
 
         @Override
-        public void onChange(boolean selfChange) {
-            update();
+         public void onChange(boolean selfChange, Uri uri) {
+            if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.DOUBLE_TAP_SLEEP_GESTURE)) ||
+                    uri.equals(Settings.System.getUriFor(
+                    Settings.System.DOUBLE_TAP_SLEEP_LOCKSCREEN)) &&
+                    mNotificationShadeWindowViewController != null) {
+                mNotificationShadeWindowViewController.updateSettings();
+            } else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.FORCE_SHOW_NAVBAR))) {
+                updateNavigationBar(false);
+            }
+
         }
 
         public void update() {
             if (mNotificationShadeWindowViewController != null) {
                 mNotificationShadeWindowViewController.updateSettings();
             }
+              updateNavigationBar(false);
         }
     }
 
@@ -903,7 +919,6 @@ public class StatusBar extends SystemUI implements DemoMode,
         DateTimeView.setReceiverHandler(timeTickHandler);
     }
 
-    private boolean mShowNavBar;
 
     @Override
     public void start() {
@@ -4141,9 +4156,9 @@ public class StatusBar extends SystemUI implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.LOCKSCREEN_CHARGING_ANIMATION_STYLE),
                     false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(Settings.System.getUriFor(
+             /*resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.FORCE_SHOW_NAVBAR),
-                    false, this, UserHandle.USER_ALL);
+                    false, this, UserHandle.USER_ALL);*/
             resolver.registerContentObserver(Settings.System.getUriFor(
                      Settings.System.QS_TILE_STYLE),
                     false, this, UserHandle.USER_ALL);
@@ -4171,7 +4186,7 @@ public class StatusBar extends SystemUI implements DemoMode,
             setLockScreenMediaBlurLevel();
             updateChargingAnimation();
             updateTileStyle();
-            updateNavigationBar(false);
+          //updateNavigationBar(false);
         }
     }
 

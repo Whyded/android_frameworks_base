@@ -43,7 +43,6 @@ import android.os.SystemProperties;
 import android.os.SystemClock;
 import android.net.NetworkInfo;
 import android.net.ConnectivityManager;
-import android.os.SystemProperties;
 import android.text.format.Time;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
