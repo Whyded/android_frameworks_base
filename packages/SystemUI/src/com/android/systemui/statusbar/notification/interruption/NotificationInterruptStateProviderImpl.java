@@ -285,7 +285,8 @@ public class NotificationInterruptStateProviderImpl implements NotificationInter
         boolean isImportantHeadsUp = false;
         String notificationPackageName = sbn.getPackageName();
         isImportantHeadsUp = notificationPackageName.equals(getDefaultDialerPackage(mTm))
-                || notificationPackageName.equals(getDefaultSmsPackage(mContext));
+                || notificationPackageName.equals(getDefaultSmsPackage(mContext))
+                || notificationPackageName.contains("clock");                 
         return !mStatusBarStateController.isDozing() && mLessBoringHeadsUp && !isImportantHeadsUp;
     }
 
@@ -389,19 +390,6 @@ public class NotificationInterruptStateProviderImpl implements NotificationInter
         return true;
     }
 
-    @Override
-    public void setUseLessBoringHeadsUp(boolean lessBoring) {
-        mLessBoringHeadsUp = lessBoring;
-    }
-
-    public boolean shouldSkipHeadsUp(StatusBarNotification sbn) {
-        boolean isImportantHeadsUp = false;
-        String notificationPackageName = sbn.getPackageName().toLowerCase();
-        isImportantHeadsUp = notificationPackageName.contains("dialer") ||
-                notificationPackageName.contains("messaging") ||
-                notificationPackageName.contains("clock");
-        return !mStatusBarStateController.isDozing() && mLessBoringHeadsUp && !isImportantHeadsUp;
-    }
 
     /**
      * Common checks between alerts that occur while the device is awake (heads up & bubbles).
